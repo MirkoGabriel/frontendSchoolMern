@@ -14,7 +14,7 @@ export default class CreateStudents extends Component {
     }
 
     getGroups = async () => {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/');
+        const res = await axios.get('http://localhost:4000/api/groups/');
         this.setState({ groups: res.data });
     }
 
@@ -26,8 +26,8 @@ export default class CreateStudents extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/groups/' + id);
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/grades?group=' + id)
+                axios.delete('http://localhost:4000/api/groups/' + id);
+                axios.delete('http://localhost:4000/api/grades?group=' + id)
 
                 swal({
                     text: 'Group Deleted',
@@ -50,7 +50,7 @@ export default class CreateStudents extends Component {
 
     onSubmit = async e => {
         e.preventDefault();
-        await axios.post('https://backend-school-mirko.herokuapp.com/api/groups/', {
+        await axios.post('http://localhost:4000/api/groups/', {
             name: this.state.groupName
         })
         this.setState({ groupName: '' });

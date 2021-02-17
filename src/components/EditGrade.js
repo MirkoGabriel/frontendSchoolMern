@@ -22,7 +22,7 @@ export default class EditGrade extends Component {
         console.log(this.props.match.params.id)
 
         if (this.props.match.params.id) {
-            const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/grades/' + this.props.match.params.id)
+            const res = await axios.get('http://localhost:4000/api/grades/' + this.props.match.params.id)
             console.log(res)
             this.setState({
                 periodSelected: res.data.period._id,
@@ -49,7 +49,7 @@ export default class EditGrade extends Component {
         console.log(newGrade)
         
         if (this.state.editing) {
-            await axios.put('https://backend-school-mirko.herokuapp.com/api/grades/' + this.state._id, newGrade).then(res => {
+            await axios.put('http://localhost:4000/api/grades/' + this.state._id, newGrade).then(res => {
                 // do stuff
                 console.log(res);
                 swal({

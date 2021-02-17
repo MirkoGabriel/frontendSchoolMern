@@ -19,7 +19,7 @@ export default class CreateStudents extends Component {
     }
 
     getPeriods = async () => {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/periods/');
+        const res = await axios.get('http://localhost:4000/api/periods/');
         this.setState({ periods: res.data });
     }
 
@@ -31,8 +31,8 @@ export default class CreateStudents extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/periods/' + id);
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/grades?period=' + id);
+                axios.delete('http://localhost:4000/api/periods/' + id);
+                axios.delete('http://localhost:4000/api/grades?period=' + id);
 
                 swal({
                     text: 'Period Deleted',
@@ -77,7 +77,7 @@ export default class CreateStudents extends Component {
             const ano1 = date1.getFullYear()
             const finalDate = dia1 + '/' + mes1 + '/' + ano1
             console.log(finalDate, date1)
-            await axios.post('https://backend-school-mirko.herokuapp.com/api/periods/', {
+            await axios.post('http://localhost:4000/api/periods/', {
                 name: this.state.periodName + ' (' + startDate + ' - ' + finalDate + ')'
             })
         } else {

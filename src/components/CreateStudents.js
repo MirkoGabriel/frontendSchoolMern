@@ -20,8 +20,8 @@ export default class CreateStudents extends Component {
 
     async componentDidMount() {
         //consulto los grupos y periodos para poder seleccionarlos y los guardo en el estado en el array
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/')
-        const res1 = await axios.get('https://backend-school-mirko.herokuapp.com/api/periods/')
+        const res = await axios.get('http://localhost:4000/api/groups/')
+        const res1 = await axios.get('http://localhost:4000/api/periods/')
 
         this.setState({
             groups: res.data.map(group => group),
@@ -33,7 +33,7 @@ export default class CreateStudents extends Component {
 
         //si se presenta un id en el params voy a actualizar y retorno los valores de ese id student
         if (this.props.match.params.id) {
-            const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/students/' + this.props.match.params.id)
+            const res = await axios.get('http://localhost:4000/api/students/' + this.props.match.params.id)
             console.log(res)
             this.setState({
                 groupSelected: res.data.group,
@@ -65,7 +65,7 @@ export default class CreateStudents extends Component {
 
         //si editing esra en true hace el metodo put
         if (this.state.editing) {
-            await axios.put('https://backend-school-mirko.herokuapp.com/api/students/' + this.state._id, newStudent).then(res => {
+            await axios.put('http://localhost:4000/api/students/' + this.state._id, newStudent).then(res => {
                 // do stuff
                 console.log(res);
                 swal({
@@ -86,7 +86,7 @@ export default class CreateStudents extends Component {
         } else {
 
             //si editing esra en false hace el metodo pots
-            await axios.post('https://backend-school-mirko.herokuapp.com/api/students/', newStudent).then(res => {
+            await axios.post('http://localhost:4000/api/students/', newStudent).then(res => {
                 // do stuff
                 console.log(res);
                 swal({

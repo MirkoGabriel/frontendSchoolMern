@@ -15,14 +15,14 @@ export default class CreateSubjects extends Component {
     //consulto a la bbdd los groupos para guardarlos en el array groups y ponerlo en el select y filtrar
     async componentDidMount() {
         console.log(this.props.match.params)
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/')
+        const res = await axios.get('http://localhost:4000/api/groups/')
         this.setState({
             groups: res.data.map(group => group),
             groupSelected: ''
         })
         //si recibe por parametro un id de una materia 'x' voy a actualuizar y llamo a la materia de ese id
         if (this.props.match.params.id) {
-            const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/subjects/' + this.props.match.params.id)
+            const res = await axios.get('http://localhost:4000/api/subjects/' + this.props.match.params.id)
             console.log(res)
             this.setState({
                 groupSelected: res.data.group,
@@ -43,7 +43,7 @@ export default class CreateSubjects extends Component {
 
         //perviamente en el estado defini un atributo 'editing' el cual si esta en true actualizo
         if (this.state.editing) {
-            await axios.put('https://backend-school-mirko.herokuapp.com/api/subjects/' + this.state._id, newSubject).then(res => {
+            await axios.put('http://localhost:4000/api/subjects/' + this.state._id, newSubject).then(res => {
                 // do stuff
                 console.log(res);
                 swal({
@@ -63,7 +63,7 @@ export default class CreateSubjects extends Component {
                 })
         } else {
             //si editing esta en false hago un post
-            await axios.post('https://backend-school-mirko.herokuapp.com/api/subjects/', newSubject).then(res => {
+            await axios.post('http://localhost:4000/api/subjects/', newSubject).then(res => {
                 // do stuff
                 console.log(res);
                 swal({

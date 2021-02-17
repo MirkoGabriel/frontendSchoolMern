@@ -13,7 +13,7 @@ export default class StudentsList extends Component {
     //cargo en los selec los filtros (grupos y periodos)
     async componentDidMount() {
         this.getStudents();
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/')
+        const res = await axios.get('http://localhost:4000/api/groups/')
         this.setState({
             groups: res.data.map(group => group),
             groupSelected: ''
@@ -52,7 +52,7 @@ export default class StudentsList extends Component {
 
     //consulta a la bbdd los estudiantes y los muestra (en el back end esta seteado para que muestre los 10 primeros)
     async getStudents() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/students/');
+        const res = await axios.get('http://localhost:4000/api/students/');
         this.setState({
             students: res.data.slice(0, 10),
             studentsAux: res.data
@@ -68,8 +68,8 @@ export default class StudentsList extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/students/' + id);
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/grades?student=' + id)
+                axios.delete('http://localhost:4000/api/students/' + id);
+                axios.delete('http://localhost:4000/api/grades?student=' + id)
                 
                 swal({
                     text: 'Student Deleted',

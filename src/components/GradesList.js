@@ -27,7 +27,7 @@ export default class GradesList extends Component {
 
     //obtiene de la bbdd todas las students
     async getStudents() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/students/');
+        const res = await axios.get('http://localhost:4000/api/students/');
         this.setState({
             studentsAux: res.data.map(student => student),
             studentSelected: '',
@@ -35,7 +35,7 @@ export default class GradesList extends Component {
     }
     //obtiene de la bbdd todas las periods
     async getPeriods() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/periods/');
+        const res = await axios.get('http://localhost:4000/api/periods/');
         this.setState({
             periods: res.data.map(period => period),
             periodSelected: ''
@@ -43,14 +43,14 @@ export default class GradesList extends Component {
     }
     //obtiene de la bbdd todas las notas
     async getGrades() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/grades/');
+        const res = await axios.get('http://localhost:4000/api/grades/');
         this.setState({
             gradesAux: res.data.map(period => period)
         })
     }
     //obtiene de la bbdd todas los grupos
     async getGroups() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/');
+        const res = await axios.get('http://localhost:4000/api/groups/');
         this.setState({
             groups: res.data.map(group => group),
             groupSelected: ''
@@ -136,7 +136,7 @@ export default class GradesList extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/grades?id=' + id);
+                axios.delete('http://localhost:4000/grades?id=' + id);
 
                 swal({
                     text: 'Grade Deleted',

@@ -14,7 +14,7 @@ export default class SubjectsList extends Component {
     async componentDidMount() {
         this.getSubjects();
 
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/')
+        const res = await axios.get('http://localhost:4000/api/groups/')
         this.setState({
             groups: res.data.map(group => group),
             groupSelected: ''
@@ -53,7 +53,7 @@ export default class SubjectsList extends Component {
     alert
     //obtiene de la bbdd todas las meterias
     async getSubjects() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/subjects/');
+        const res = await axios.get('http://localhost:4000/api/subjects/');
         console.log(res)
         this.setState({
             subjects: res.data.slice(0, 10),
@@ -70,8 +70,8 @@ export default class SubjectsList extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/subjects/' + id);
-                axios.delete('https://backend-school-mirko.herokuapp.com/api/grades?subject=' + id)
+                axios.delete('http://localhost:4000/api/subjects/' + id);
+                axios.delete('http://localhost:4000/api/grades?subject=' + id)
 
                 swal({
                     text: 'Subject Deleted',

@@ -22,7 +22,7 @@ export default class CreateGrades extends Component {
 
     async componentDidMount() {
         console.log(this.props.match.params.id)
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/groups/')
+        const res = await axios.get('http://localhost:4000/api/groups/')
         this.getStudents();
         this.getSubjects();
         this.getGrades();
@@ -38,7 +38,7 @@ export default class CreateGrades extends Component {
 
     //obtiene de la bbdd todas las students
     async getStudents() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/students/');
+        const res = await axios.get('http://localhost:4000/api/students/');
         this.setState({
             // students: res.data.slice(0, 10),
             studentsAux: res.data
@@ -48,7 +48,7 @@ export default class CreateGrades extends Component {
 
     //obtiene de la bbdd todas las meterias
     async getSubjects() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/subjects/');
+        const res = await axios.get('http://localhost:4000/api/subjects/');
         this.setState({
             // subjects: res.data.slice(0,10),
             subjectsAux: res.data
@@ -57,7 +57,7 @@ export default class CreateGrades extends Component {
     }
 
     async getGrades() {
-        const res = await axios.get('https://backend-school-mirko.herokuapp.com/api/grades/');
+        const res = await axios.get('http://localhost:4000/api/grades/');
         console.log(res)
         this.setState({
             // subjects: res.data.slice(0,10),
@@ -135,7 +135,7 @@ export default class CreateGrades extends Component {
                 icon: "warning"
             })
         } else {
-            await axios.post('https://backend-school-mirko.herokuapp.com/api/grades', newGrade).then(res => {
+            await axios.post('http://localhost:4000/api/grades', newGrade).then(res => {
                 // do stuff
                 console.log(res);
 
