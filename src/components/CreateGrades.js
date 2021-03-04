@@ -67,49 +67,41 @@ export default class CreateGrades extends Component {
     }
 
     filter = async (group) => {
-        if (group === '') {
-            swal({
-                title: 'Error',
-                text: 'Select group',
-                icon: "warning"
-            })
-            //window.location.href='createGrade'
-            this.setState({ groupSelected: '' })
-        } else {
-            const val1 = this.state.subjectsAux.find(pos => pos.group === null)
-            const val2 = this.state.studentsAux.find(pos => pos.group === null)
-            if (val1 || val2) {
+        const val1 = this.state.subjectsAux.find(pos => pos.group === null)
+        const val2 = this.state.studentsAux.find(pos => pos.group === null)
+        if (val1 || val2) {
+            if (group !== '') {
                 swal({
                     title: 'Error',
                     text: 'Error there are no groups assigned to students or subjects',
                     icon: "error"
                 })
+            }
+        } else {
+
+            const res1 = this.state.subjectsAux.filter(pos => pos.group._id === group)
+
+            if (res1.length === 0 && group !== '') {
+                swal({
+                    title: 'Error',
+                    text: 'There are no subjects in this group',
+                    icon: "warning"
+                })
             } else {
+                this.setState({ subjects: res1 })
+            }
 
-                const res1 = this.state.subjectsAux.filter(pos => pos.group._id === group)
+            const res = this.state.studentsAux.filter(pos => pos.group._id === group)
 
-                if (res1.length === 0) {
-                    swal({
-                        title: 'Error',
-                        text: 'There are no subjects in this group',
-                        icon: "warning"
-                    })
-                } else {
-                    this.setState({ subjects: res1 })
-                }
-
-                const res = this.state.studentsAux.filter(pos => pos.group._id === group)
-
-                if (res.length === 0) {
-                    swal({
-                        title: 'Error',
-                        text: 'There are no students in this group',
-                        icon: "warning"
-                    })
-                    this.setState({ groupSelected: '' })
-                } else {
-                    this.setState({ students: res })
-                }
+            if (res.length === 0 && group !== '') {
+                swal({
+                    title: 'Error',
+                    text: 'There are no students in this group',
+                    icon: "warning"
+                })
+                this.setState({ groupSelected: '' })
+            } else {
+                this.setState({ students: res })
             }
         }
     }
@@ -160,34 +152,38 @@ export default class CreateGrades extends Component {
     }
 
     filterPeriod = async (student) => {
-        const res1 = this.state.studentsAux.find(pos => pos._id === student)
-        console.log(res1)
-        if (res1) {
-            if (res1.period === null) {
-                this.setState({
-                    inperiod: '',
-                    inperiodID: ''
-                })
+        if (student !== '') {
+            const res1 = this.state.studentsAux.find(pos => pos._id === student)
+            console.log(res1)
+            if (res1) {
+                if (res1.period === null) {
+                    this.setState({
+                        inperiod: '',
+                        inperiodID: ''
+                    })
+                } else {
+                    this.setState({
+                        inperiod: res1.period.name,
+                        inperiodID: res1.period._id
+                    })
+                }
             } else {
-                this.setState({
-                    inperiod: res1.period.name,
-                    inperiodID: res1.period._id
+                swal({
+                    text: 'Error!!! Select a Student!!!',
+                    icon: "error"
+                }).then(() => {
+                    this.setState({
+                        inperiod: '',
+                        inperiodID: ''
+                    })
                 })
             }
-
         } else {
-            swal({
-                text: 'Error!!! Select a Student!!!',
-                icon: "error"
-            }).then(() => {
-
-                this.setState({
-                    inperiod: '',
-                    inperiodID: ''
-                })
+            this.setState({
+                inperiod: '',
+                inperiodID: ''
             })
         }
-
     }
     onInputChange = e => {
         console.log(e.target.name, e.target.value)

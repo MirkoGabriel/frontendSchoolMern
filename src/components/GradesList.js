@@ -58,13 +58,7 @@ export default class GradesList extends Component {
     }
     //filtra estudiantes por grupo
     filterStudent = async (group) => {
-        if (group === '') {
-            swal({
-                title: 'Error',
-                text: 'Select group',
-                icon: "warning"
-            })
-        } else {
+        if (group !== '') {
             const res1 = this.state.studentsAux.find(pos => pos.group === null)
             if (res1) {
                 swal({
@@ -94,16 +88,7 @@ export default class GradesList extends Component {
     }
     //filtra las notas del alumno por periodo
     filter = async (student, period) => {
-        console.log(student, period)
-        if (period === '') {
-            swal({
-                title: 'Error',
-                text: 'Select period',
-                icon: "warning"
-            }).then(() => {
-                window.location.href = 'listGrades'
-            })
-        } else {
+        if (student !== '' && period !== '') {
             const res = this.state.gradesAux.filter(pos => pos.student._id === student && pos.period._id === period)
             const alumno = this.state.studentsAux.find(pos => pos._id === student)
 
@@ -129,6 +114,7 @@ export default class GradesList extends Component {
         window.print()
     }
     deleteNote = async (id) => {
+       console.log(id)
         await swal({
             title: 'Delete',
             text: 'Are you sure you want to delete the grade?',
@@ -136,17 +122,17 @@ export default class GradesList extends Component {
             buttons: ['No', 'Yes']
         }).then(respuesta => {
             if (respuesta) {
-                axios.delete('http://localhost:4000/grades?id=' + id);
+                axios.delete('http://localhost:4000/api/grades?id=' + id);
 
                 swal({
                     text: 'Grade Deleted',
                     icon: 'success'
                 }).then(() => {
-                    window.location.href = 'listGrades'
+                    window.location.href = '/listGrades'
                 })
             }
         })
-        
+
     }
 
     onInputChange = e => {
