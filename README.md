@@ -31,5 +31,5 @@ Aca se registran las notas de los alumnos solo al seleccionar el grupo o curso, 
 
 En esta sección genera "el boletin", primero selecciono el grupo (esto sirve como filtro de alumnos nada mas no tiene que ver con las notas del alumno en un periodo, puesto que puede generar el boletin de un alumno que curso en 2018 un ese mismo habra cursado en un grupo distinto al que selecciono), a su vez selecciono el alumno a generar el boletin y por ultimo el periodo si hay notas en ese periodo genera las notas de otra forma muestrar un mensaje de error.
 
-Deploy de la App
+## Deploy de la App
 http://mirko-school.herokuapp.com/
