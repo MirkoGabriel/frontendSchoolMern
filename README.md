@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Manual Usuario
+El sistema cuanta con las secciones de administración estudiantes, materias, grupos, periodo.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Students
+-- List Students --
 
-## Available Scripts
+En esta seccion muestra solo los primeros 10 registros de la coleccion "students" ya que no seria logico mostrar los cientos de estudiantes.
+Tambien para que se pueda ver mejor hay un filtro de alumnos por grupos, en los cuales se pueden editar datos (cambiar de grupo o periodo) y eliminarlos
+-- Register Students --
 
-In the project directory, you can run:
+Aca se registran los alumno asignandolos a un grupo y periodo (no se puede ingresar un alumno con el mismo nombre)
+## Subjects
+--List Subjects --
 
-### `npm start`
+De igual manera muestra los 10 primeros registros de la colección "subjects"
+Se pueden editar (asignarlos a otro grupo) y eliminar.
+-- Register Subject --
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Se ingresan las materias asignandolas a un grupo o curso (no se puede ingresar una materia con el mismo nombre)
+## Groups
+-Aca se ingresan los grupos y se listan al costado.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Periods
+-Aca se ingresan los periodos y se listan al costado.
 
-### `npm test`
+## Ratings
+-- Create Grades --
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aca se registran las notas de los alumnos solo al seleccionar el grupo o curso, muestran los alumnos y materias correspondientes a ese grupo, tambien al hacer "click" selecciona el periodo en el que cursa actualmente (no se puede ingresasar una misma nota del la misma materia del mismo alumno.
+-- Students Reports --
 
-### `npm run build`
+En esta sección genera "el boletin", primero selecciono el grupo (esto sirve como filtro de alumnos nada mas no tiene que ver con las notas del alumno en un periodo, puesto que puede generar el boletin de un alumno que curso en 2018 un ese mismo habra cursado en un grupo distinto al que selecciono), a su vez selecciono el alumno a generar el boletin y por ultimo el periodo si hay notas en ese periodo genera las notas de otra forma muestrar un mensaje de error.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deploy de la App
+http://mirko-school.herokuapp.com/
